@@ -1,5 +1,5 @@
 # Whiteboard
-This is a virtual whiteboard for me to flesh out some ideas I've had that may or may not be work well and make good starting points for research. The idea is that eventually I will get around to putting them to the test or realizing that they won't actually work. If you've got a similar idea, think of some challenges I might run into or something that I'm overlooking, or want to work together, feel free to open an issue, submit a pull request, or get in tough.
+This is a virtual whiteboard for me to flesh out some ideas I've had that may or may not be work well and make good starting points for research. The idea is that eventually I will get around to putting them to the test or realizing that they won't actually work. If you've got a similar idea, think of some challenges I might run into or something that I'm overlooking, or want to work together, feel free to open an issue, submit a pull request, or get in touch.
 
 ## Categories
 
