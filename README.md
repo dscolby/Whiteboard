@@ -47,4 +47,4 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
 
 ## Reinforcement Learning
 
-## Game Theory and Other Sequential Decisionmaking Formalizations
+## Game Theory and Other Sequential Decision-making Formalizations
