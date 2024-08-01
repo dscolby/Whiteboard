@@ -18,11 +18,12 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
     2. Causal Discovery as a bandit problem to avoid enumerating over every DAG
         1. Balance exploration of best known DAG with exploitation of unknown DAGs
         2. Can consider each DAG as an arm in a MAB and use CI tests or score fucntions on subsets of data as rewards
-        3. Too many to enumerate, so need some algorithm for infinitely-armed bandits
+            1. If using CI tests, would need to apply Meek's rules afterwards
+        4. Too many to enumerate, so need some algorithm for infinitely-armed bandits
             1. One potential is GP
             2. There are other algorithms out there, I just need to look more into it
             3. Could then probably use UCB, TS, or some minimal regret acquisition function
-        4. How to convert DAGs to unique arms
+        5. How to convert DAGs to unique arms
             1. Need to map each DAG to unique number to get arm IDs
             2. Don't want to build every DAG and assign a number
                 1. Takes too much time and memory
