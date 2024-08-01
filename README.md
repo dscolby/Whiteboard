@@ -15,7 +15,7 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
 1. The challenge of structure learning is the number of possible DAGs and the number of data points for calculating scores or independence tests
     1. One way to solve the second problem is to run the independence tests or score functions on a random subset of the data many times
         1. If the sampling is independent, then in theory the average of these smaller calculations should converge to the score or test statistics for the whole dataset
-    2. Causal Discovery as a bandit problem to avoid enumerating over eveery DAG
+    2. Causal Discovery as a bandit problem to avoid enumerating over every DAG
         1. Balance exploration of best known DAG with exploitation of unknown DAGS
         2. Can consider each DAG as an arm in a MAB and use CI tests or score fucntions on subsets of data as rewards
         3. Too many to enumerate, so need some algorithm for infinitely-armed bandits
