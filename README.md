@@ -7,7 +7,7 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
 
 [Reinforcement Learning](#reinforcement-learning)
 
-[Game Theory and Other Sequential Decisionmaking Formalizations](#game-theory-and-other-sequential-decisionmaking-formalizations)
+[Game Theory and Other Sequential Decision-making Formalizations](#game-theory-and-other-sequential-decision-making-formalizations)
 
 ## Causal Discovery
 
@@ -32,7 +32,16 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
                     3. Each 1 in lower triangular adjacency matrix corresponds to unique row and column in the matrix
                     4. Go row by row and concatenate number (row column) for each 1 in matrix
                     5. Creates unique integer for each DAG
-                    6. Can enumerate over these integers without explicitly constructing DAGs or adjacency matrices
+                        1. Example:
+                           
+                                        |    *     | Column 1 | Column 2 |  Column 3 |
+                                        |  :---:   |   :---:  |   :---:  |   :---:   |
+                                  A =   |   Row 1  |     1    |     0    |     0     |
+                                        |   Row 2  |     0    |     1    |     0     |
+                                        |   Row 3  |     0    |     0    |     0     |
+              
+                                  f(A) = 1122
+                    7. Can enumerate over these integers without explicitly constructing DAGs or adjacency matrices
     5. With arm IDs and way to calculate (stochastic) rewards each time we pull an arm (DAG), we can use bandit algorithm to find the best arm!
   
 ### Causal Discovery via MCMC
