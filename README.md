@@ -40,7 +40,7 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
 2. Same approach for assigning unique numbers to DAGs
 3. Use Hamiltonian MCMC to sample over graphs
     1. Ideally want to make it converge faster
-        1. Maybe use temperature schule
+        1. Maybe use temperature schedule
         2. Could also use some kind of exploration bonus
             1. Want to encourage exploration early on but quicly converge to the best DAG(s)
                 1. Maybe use active learning or similar approach to Ready Policy One paper
