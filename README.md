@@ -12,29 +12,22 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
 ## Causal Discovery
 
 ### Causal Discovery as a Bandit Problem
-1. The challenge of structure learning is the number of possible DAGs and the number of data points for calculating scores or independence tests
-    1. One way to solve the second problem is to run the independence tests or score functions on a random subset of the data many times
-        1. If the sampling is independent, then in theory the average of these smaller calculations should converge to the score or test statistics for the whole dataset
-    2. Causal Discovery as a bandit problem to avoid enumerating over every DAG
-        1. Balance exploration of best known DAG with exploitation of unknown DAGs
-        2. Can consider each DAG as an arm in a MAB and use CI tests or score fucntions on subsets of data as rewards
-            1. If using CI tests, would need to apply Meek's rules afterwards
-        4. Too many to enumerate, so need some algorithm for infinitely-armed bandits
-            1. One potential is GP
-                1. In general, GP doesn't scale well but given the extermely low dimentionality, GP might work well here
-            3. There are other algorithms out there, I just need to look more into it
-            4. Could then probably use UCB, TS, or some minimal regret acquisition function
-        5. How to convert DAGs to unique arms
-            1. Need to map each DAG to unique number to get arm IDs
-            2. Don't want to build every DAG and assign a number
-                1. Takes too much time and memory
-                2. Need a bijection from DAGs to integers without constructing the DAG explicitly, only if we pull that arm to calculate reward
+1. Problem: CI test/score function scales with datapoints
+    1. Solution: sample random subsets of data and aggregate over samples
+        1. LLN implies that average will converge to true value for whole dataset
+2. Problem: too many DAGs to enumerate
+    1. Solution: causal discovery as an (infinitely-armed) bandit problem
+        1. Each DAG is an arm
+        2. Use score function/CI tests on subsets of data as score for arm (DAG)
+            1. If using CI tests, need to apply Meek's rules afterwards.
+        3. One potential algorithm is GP with minimal regret acquisition function
+            1. Could use NN version of GP or infinitely-armed bandit algorithm, various algorithms already exist
+            2. Problem: need to convert DAGs to unique arms, ideally without constructing each DAG
+                1. Solution: bijection between DAGs and integers
                     1. Adjacency matrix of DAG is lower triangular 1s and 0s
                     2. If entry is not 1, it is 0 so really only need to focus on one or the other
-                    3. Each 1 in lower triangular adjacency matrix corresponds to unique row and column in the matrix
-                    4. Go row by row and concatenate number (row column) for each 1 in matrix
-                    5. Creates unique integer for each DAG
-                        1. Example:
+                    3. Concatenate element positon of 1s (row number, colum number) to get unique integer
+                    5. Example:
                            
                                         |    *     | Column 1 | Column 2 |  Column 3 |
                                         |  :---:   |   :---:  |   :---:  |   :---:   |
@@ -43,13 +36,13 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
                                         |   Row 3  |     0    |     0    |     0     |
               
                                   f(A) = 1122
-                    7. Can enumerate over these integers without explicitly constructing DAGs or adjacency matrices
-    5. With arm IDs and way to calculate (stochastic) rewards each time we pull an arm (DAG), we can use bandit algorithm to find the best arm!
+                     6. Can enumerate over these integers without explicitly constructing DAGs or adjacency matrices
+3. With arm IDs and way to calculate (stochastic) rewards each time we pull an arm (DAG), we can use bandit algorithm to find the best arm!
   
 ### Causal Discovery via MCMC
 1. Same approach as above to calculating scores or independence tests
 2. Same approach for assigning unique numbers to DAGs
-3. Use Hamiltonian MCMC to sample over graphs
+3. Use Metropolis-Hastings MCMC to sample over graphs
     1. Ideally want to make it converge faster
         1. Maybe use temperature schedule
         2. Could also use some kind of exploration bonus
