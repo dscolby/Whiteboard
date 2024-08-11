@@ -38,6 +38,7 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
                                   f(A) = 1122
                      6. Can enumerate over these integers without explicitly constructing DAGs or adjacency matrices
 3. With arm IDs and way to calculate (stochastic) rewards each time we pull an arm (DAG), we can use bandit algorithm to find the best arm!
+4. Can also think of this as adaptive MCMC where probability of moving to next state (arm) is UCB of one arm/sum of UCB for all arms.
   
 ### Causal Discovery via MCMC
 1. Same approach as above to calculating scores or independence tests
@@ -50,5 +51,23 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
                 1. Maybe use active learning or similar approach to Ready Policy One paper
 
 ## Reinforcement Learning
+
+### Global Active Policy Search
+1. Core Problems/Setup
+    1. In theory RL can be really simple, just need to find parameters to optimize a policy
+    2. Linear policies seem to work well for a lot of tasks, like in the ARS paper
+    3. Using policy gradients is complicated and sample inefficient
+2. Solution: Use global search/BO to find best parmeters
+    1. Already done by Mueller et. al, but uses warm starts
+    2. Use linear policy parameters as inputs and predict cumulative expected rewards with UCB
+    3. Use L2 norm between actions from initial policy states to compare policies and add them to Materne kernel
+        1. Doesn't work well without warm start policy
+    4. How to deal with kernel issue
+        1. Use learned kernel
+            1. Use DKL or similar approximator to learn a kernel
+                1. Also scales better than regular BO
+            2. Could also use non Bayesian verison
+                1. Predict mean and use dropout to get uncertainty estimates/UCB
+                2. GO-UCB
 
 ## Game Theory and Other Sequential Decision-making Formalizations
