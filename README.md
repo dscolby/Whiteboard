@@ -39,6 +39,14 @@ This is a virtual whiteboard for me to flesh out some ideas I've had that may or
                      6. Can enumerate over these integers without explicitly constructing DAGs or adjacency matrices
 3. With arm IDs and way to calculate (stochastic) rewards each time we pull an arm (DAG), we can use bandit algorithm to find the best arm!
 4. Can also think of this as adaptive MCMC where probability of moving to next state (arm) is UCB of one arm/sum of UCB for all arms.
+
+### Causal Discovery via Tabu Search
+1. We can use the same approach as above to calculating scores or independence tests
+2. Then run Tabu Search over the vectors
+    1. Tabu search searches a neighborhood and looks for the best solution
+    2. Then searches the neighborhood of the best solution and repeats
+    3. Seen vertices are added to a tabu list to not search
+        1. They get removed when the tabu list becomes full
   
 ### Causal Discovery via MCMC
 1. Same approach as above to calculating scores or independence tests
